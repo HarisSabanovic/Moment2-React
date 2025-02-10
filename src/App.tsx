@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
 import Todo from "./components/Todo"
+import Form from "./components/Form"
 
 interface Todo{
-  _id: String,
+  _id: any,
   title: String,
   text: String,
   status: String
@@ -46,13 +47,18 @@ function App() {
       {loading && <p>Laddar...</p>}
       {error && <p>{error}</p>}
 
+      <div className="Form-container">
+       <Form TodoAdded={fetchTodos}/>
+      </div>
+
       <div className="Todo-container">
         {
           todos && todos.map((todo) => {
-            return <Todo todo={todo} key={todo._id}/>
+            return <Todo todo={todo} key={todo._id} onUpdate={fetchTodos}/>
           })
         }
       </div>
+
     </>
   )
 }
