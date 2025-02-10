@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
+import Todo from "./components/Todo"
 
 interface Todo{
+  _id: String,
   title: String,
   text: String,
   status: String
@@ -9,9 +11,14 @@ interface Todo{
 
 function App() {
   // States för komponenten
-  const [todos, setTodos] = useState<Todo | []>([])
+  const [todos, setTodos] = useState<Todo[] | []>([])
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+
+
+  useEffect(() => {
+    fetchTodos();
+  }, [])
 
   const fetchTodos = async () => {
     try {
@@ -35,6 +42,17 @@ function App() {
   return (
     <>
       <h1>Att Göra lista:</h1>
+
+      {loading && <p>Laddar...</p>}
+      {error && <p>{error}</p>}
+
+      <div className="Todo-container">
+        {
+          todos && todos.map((todo) => {
+            return <Todo todo={todo} key={todo._id}/>
+          })
+        }
+      </div>
     </>
   )
 }
