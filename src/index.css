@@ -4,18 +4,21 @@
   box-sizing: border-box;
 }
 
+h1 {
+  text-align: center;
+}
+
 .Todo-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   gap: 20px;
-  background-color: #f0f4f8;
 }
 
 .Todo-Card {
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   padding: 15px;
   border-radius: 8px;
   background-color: #ffffff;
@@ -32,7 +35,6 @@
 .Todo-Card h2 {
   font-size: 1.5rem;
   margin: 0;
-  color: #333;
 }
 
 .Todo-Card p {
@@ -81,7 +83,6 @@ form select option:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f4f4f4;
 }
 
 .Form-container form {
@@ -90,10 +91,24 @@ form select option:hover {
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.Todo-Card button {
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.Form-container p {
+  color: red;
 }
 
 .Form-container label {
