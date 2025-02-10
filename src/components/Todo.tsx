@@ -25,6 +25,26 @@ const Todo = ({todo, onUpdate} : {todo: any, onUpdate: Function}) => {
       }
     }
 
+    const deleteTodo = async () => {
+        try {
+            const response = await fetch("http://localhost:9000/delete/" + todo._id, {
+                method: "DELETE",
+                headers: {
+                    "Content-type": "application/json"
+                }
+            });
+
+            if(!response.ok) {
+                throw Error("Kunde inte radera todo");
+                
+            }
+
+            onUpdate();
+        } catch (error) {
+            throw error;
+        }
+    }
+
   return (
     <div className="Todo-Card" style={{ borderLeft: `5px solid ${statusColor}` }}>
         <h2>{todo.title}</h2>
@@ -39,6 +59,10 @@ const Todo = ({todo, onUpdate} : {todo: any, onUpdate: Function}) => {
                 <option>Ej påbörjad</option>
             </select>
         </form>
+
+        <button onClick={deleteTodo}>
+            Radera
+        </button>
     </div>
   )
 }
